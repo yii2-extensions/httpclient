@@ -82,9 +82,10 @@ class Response extends Message
      *
      * @return string|null format name, 'null' - if detection failed.
      */
-    protected function defaultFormat()
+    protected function defaultFormat(): string|null
     {
         $format = $this->detectFormatByHeaders($this->getHeaders());
+
         if ($format === null) {
             $format = $this->detectFormatByContent($this->getContent());
         }

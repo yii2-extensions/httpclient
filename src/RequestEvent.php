@@ -12,12 +12,12 @@ use yii\base\Event;
 class RequestEvent extends Event
 {
     /**
-     * @var Request related HTTP request instance.
+     * @var Request|null related HTTP request instance.
      */
-    public $request;
+    public Request|null $request = null;
     /**
      * @var Response|null related HTTP response.
      * This field will be filled only in case some response is already received, e.g. after request is sent.
      */
-    public $response;
+    public Response|null $response = null;
 }

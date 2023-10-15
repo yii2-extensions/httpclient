@@ -53,7 +53,7 @@ class Client extends Component
     /**
      * @var string base request URL.
      */
-    public $baseUrl;
+    public $baseUrl = '';
     /**
      * @var array the formatters for converting data into the content of the specified [[format]].
      * The array keys are the format names, and the array values are the corresponding configurations
@@ -85,7 +85,7 @@ class Client extends Component
     /**
      * @var array|callable|string|Transport HTTP message transport.
      */
-    private $_transport = 'yii\httpclient\StreamTransport';
+    private $_transport = StreamTransport::class;
 
     /**
      * Sets the HTTP message transport. It can be specified in one of the following forms:

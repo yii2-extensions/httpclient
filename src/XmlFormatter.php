@@ -27,9 +27,9 @@ class XmlFormatter extends BaseObject implements FormatterInterface
      */
     public $version = '1.0';
     /**
-     * @var string the XML encoding. If not set, it will use the value of [[\yii\base\Application::charset]].
+     * @var string|null the XML encoding. If not set, it will use the value of [[\yii\base\Application::charset]].
      */
-    public $encoding;
+    public string|null $encoding = null;
     /**
      * @var string the name of the root element.
      */
@@ -42,7 +42,7 @@ class XmlFormatter extends BaseObject implements FormatterInterface
      * @var bool whether to interpret objects implementing the [[\Traversable]] interface as arrays.
      * Defaults to `true`.
      */
-    public $useTraversableAsArray = true;
+    public bool $useTraversableAsArray = true;
 
     /**
      * {@inheritdoc}

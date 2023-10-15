@@ -30,11 +30,11 @@ class Request extends Message
     /**
      * @var array|string target URL.
      */
-    private $_url;
+    private array|string|null $_url = null;
     /**
      * @var string|null full target URL.
      */
-    private $_fullUrl;
+    private string|null $_fullUrl = null;
     /**
      * @var string request method.
      */
@@ -52,7 +52,7 @@ class Request extends Message
     /**
      * @var resource The file that the transfer should be written to.
      */
-    private $_outputFile;
+    private $_outputFile = null;
     /**
      * @var array Stores map (alias => name) of the content parameters
      */
@@ -62,9 +62,9 @@ class Request extends Message
      */
     private string|float|null $_startTime = null;
     /**
-     * @var float stores the seconds of how long does it take to get a response
+     * @var float|null stores the seconds of how long does it take to get a response
      */
-    private $_timeElapsed;
+    private float|null $_timeElapsed = null;
 
     /**
      * Sets target URL.
