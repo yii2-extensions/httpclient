@@ -58,7 +58,7 @@ class StreamTransport extends Transport
 
         try {
             $context = stream_context_create($contextOptions);
-            $stream = fopen($url, 'rb', false, $context);
+            $stream = @fopen($url, 'rb', false, $context);
 
             if ($stream === false) {
                 throw new \Exception('Unable to open URL: ' . $url);
