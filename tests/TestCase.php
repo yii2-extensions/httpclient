@@ -26,6 +26,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
     /**
      * Populates Yii::$app with a new application
      * The application will be destroyed on tearDown() automatically.
+     *
      * @param array $config The application configuration, if needed
      * @param string $appClass name of the application class to create
      */
@@ -47,10 +48,10 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
             'components' => [
                 'request' => [
                     'cookieValidationKey' => 'wefJDF8sfdsfSDefwqdxj9oq',
-                    'scriptFile' => __DIR__ .'/index.php',
+                    'scriptFile' => __DIR__ . '/index.php',
                     'scriptUrl' => '/index.php',
                 ],
-            ]
+            ],
         ], $config));
     }
 
@@ -78,9 +79,11 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
 
     /**
      * Invokes object method, even if it is private or protected.
+     *
      * @param object $object object.
      * @param string $method method name.
      * @param array $args method arguments
+     *
      * @return mixed method result
      */
     protected function invoke($object, $method, array $args = [])

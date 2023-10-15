@@ -17,7 +17,6 @@ class JsonParser extends BaseObject implements ParserInterface
      */
     public $asArray = true;
 
-
     /**
      * {@inheritdoc}
      */

@@ -111,7 +111,7 @@ abstract class TransportTestCase extends TestCase
             ->setUrl('search.php')
             ->setData([
                 'show' => 'quickref',
-                'pattern' => 'array_merge'
+                'pattern' => 'array_merge',
             ]);
 
         $response = $request->setOptions([
@@ -163,11 +163,11 @@ abstract class TransportTestCase extends TestCase
 
         $response = $request->send();
 
-        $this->assertTrue($beforeSendEvent instanceof RequestEvent);
+        $this->assertInstanceOf(RequestEvent::class, $beforeSendEvent);
         $this->assertSame($request, $beforeSendEvent->request);
         $this->assertNull($beforeSendEvent->response);
 
-        $this->assertTrue($afterSendEvent instanceof RequestEvent);
+        $this->assertInstanceOf(RequestEvent::class, $afterSendEvent);
         $this->assertSame($request, $afterSendEvent->request);
         $this->assertSame($response, $afterSendEvent->response);
     }
@@ -196,11 +196,11 @@ abstract class TransportTestCase extends TestCase
 
         $response = $request->send();
 
-        $this->assertTrue($beforeSendEvent instanceof RequestEvent);
+        $this->assertInstanceOf(RequestEvent::class, $beforeSendEvent);
         $this->assertSame($request, $beforeSendEvent->request);
         $this->assertNull($beforeSendEvent->response);
 
-        $this->assertTrue($afterSendEvent instanceof RequestEvent);
+        $this->assertInstanceOf(RequestEvent::class, $afterSendEvent);
         $this->assertSame($request, $afterSendEvent->request);
         $this->assertSame($response, $afterSendEvent->response);
     }
@@ -266,7 +266,7 @@ abstract class TransportTestCase extends TestCase
             'organizationName' => 'MySelf',
             'organizationalUnitName' => 'Whatever',
             'commonName' => 'mySelf',
-            'emailAddress' => 'user@domain.com'
+            'emailAddress' => 'user@domain.com',
         ];
         $passphrase = '1234';
 

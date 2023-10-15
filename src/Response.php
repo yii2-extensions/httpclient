@@ -10,8 +10,8 @@ use yii\web\HeaderCollection;
 /**
  * Response represents HTTP request response.
  *
- * @property-read bool $isOk Whether response is OK.
- * @property-read string $statusCode Status code.
+ * @property bool $isOk Whether response is OK.
+ * @property string $statusCode Status code.
  */
 class Response extends Message
 {
@@ -48,7 +48,9 @@ class Response extends Message
 
     /**
      * Returns status code.
+     *
      * @throws Exception on failure.
+     *
      * @return string status code.
      */
     public function getStatusCode()
@@ -64,8 +66,10 @@ class Response extends Message
 
     /**
      * Checks if response status code is OK (status code = 2xx)
-     * @return bool whether response is OK.
+     *
      * @throws Exception
+     *
+     * @return bool whether response is OK.
      */
     public function getIsOk()
     {
@@ -75,6 +79,7 @@ class Response extends Message
 
     /**
      * Returns default format automatically detected from headers and content.
+     *
      * @return string|null format name, 'null' - if detection failed.
      */
     protected function defaultFormat()
@@ -89,8 +94,10 @@ class Response extends Message
 
     /**
      * Detects format from headers.
+     *
      * @param HeaderCollection $headers source headers.
-     * @return null|string format name, 'null' - if detection failed.
+     *
+     * @return string|null format name, 'null' - if detection failed.
      */
     protected function detectFormatByHeaders(HeaderCollection $headers)
     {
@@ -114,8 +121,10 @@ class Response extends Message
 
     /**
      * Detects response format from raw content.
+     *
      * @param string $content raw response content.
-     * @return null|string format name, 'null' - if detection failed.
+     *
+     * @return string|null format name, 'null' - if detection failed.
      */
     protected function detectFormatByContent($content)
     {
@@ -133,7 +142,9 @@ class Response extends Message
 
     /**
      * Parses cookie value string, creating a [[Cookie]] instance.
+     *
      * @param string $cookieString cookie header string.
+     *
      * @return Cookie cookie object.
      */
     private function parseCookie($cookieString)
@@ -167,6 +178,7 @@ class Response extends Message
 
     /**
      * @param string $rawName raw cookie parameter name.
+     *
      * @return string name of [[Cookie]] field.
      */
     private function normalizeCookieParamName(string $rawName)
@@ -184,9 +196,10 @@ class Response extends Message
     }
 
     /**
-     * @return ParserInterface message parser instance.
      * @throws Exception if unable to detect parser.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return ParserInterface message parser instance.
      */
     private function getParser()
     {

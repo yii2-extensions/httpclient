@@ -163,7 +163,7 @@ final class CurlTransportTest extends TransportTestCase
             CURLOPT_URL => 'http://app.test/full/url',
             CURLOPT_HTTPHEADER => [],
             CURLOPT_CUSTOMREQUEST => 'GET',
-            CURLOPT_FILE => 'file_handle'
+            CURLOPT_FILE => 'file_handle',
         ];
 
         $this->assertEquals($expectedCurlOptions, $curlOptions);

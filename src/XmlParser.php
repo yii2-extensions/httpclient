@@ -30,7 +30,9 @@ class XmlParser extends BaseObject implements ParserInterface
 
     /**
      * Converts XML document to array.
-     * @param string|\SimpleXMLElement $xml xml to process.
+     *
+     * @param \SimpleXMLElement|string $xml xml to process.
+     *
      * @return array XML array representation.
      */
     protected function convertXmlToArray($xml)

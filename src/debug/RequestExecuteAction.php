@@ -1,6 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -15,6 +18,7 @@ use yii\web\Response;
  * RequestExecuteAction executes HTTP request and passes its result to the browser.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
+ *
  * @since 2.0
  */
 class RequestExecuteAction extends Action
@@ -24,15 +28,16 @@ class RequestExecuteAction extends Action
      */
     public $panel;
 
-
     /**
      * @param string $seq
      * @param string $tag
      * @param bool $passthru whether to send response to the browser or render it as plain text
-     * @return Response
+     *
      * @throws HttpException
      * @throws \yii\base\InvalidConfigException
      * @throws \yii\httpclient\Exception
+     *
+     * @return Response
      */
     public function run($seq, $tag, $passthru = false)
     {
@@ -69,9 +74,12 @@ class RequestExecuteAction extends Action
 
     /**
      * Creates an HTTP request instance from log entry.
+     *
      * @param string $requestLog HTTP request log entry
-     * @return \yii\httpclient\Request request instance.
+     *
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return \yii\httpclient\Request request instance.
      */
     protected function createRequestFromLog($requestLog)
     {

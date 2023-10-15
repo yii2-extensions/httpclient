@@ -18,7 +18,6 @@ class JsonFormatter extends BaseObject implements FormatterInterface
      */
     public $encodeOptions = 0;
 
-
     /**
      * {@inheritdoc}
      */

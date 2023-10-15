@@ -39,27 +39,27 @@ final class Data
         return [
             [
                 'name1=value1&name2=value2',
-                Client::FORMAT_URLENCODED
+                Client::FORMAT_URLENCODED,
             ],
             [
                 '{"name1":"value1", "name2":"value2"}',
-                Client::FORMAT_JSON
+                Client::FORMAT_JSON,
             ],
             [
                 '[{"name1":"value1", "name2":"value2"},{"name1":"value3", "name2":"value4"}]',
-                Client::FORMAT_JSON
+                Client::FORMAT_JSON,
             ],
             [
                 '<?xml version="1.0" encoding="utf-8"?><root></root>',
-                Client::FORMAT_XML
+                Client::FORMAT_XML,
             ],
             [
                 'access_token=begin|end',
-                Client::FORMAT_URLENCODED
+                Client::FORMAT_URLENCODED,
             ],
             [
                 'some-plain-string',
-                null
+                null,
             ],
             [   // do not detect HTML as XML
                 <<<HTML
@@ -70,7 +70,7 @@ final class Data
 </html>
 HTML
                 ,
-                null
+                null,
             ],
         ];
     }
@@ -80,15 +80,15 @@ HTML
         return [
             [
                 'application/x-www-form-urlencoded',
-                Client::FORMAT_URLENCODED
+                Client::FORMAT_URLENCODED,
             ],
             [
                 'application/json',
-                Client::FORMAT_JSON
+                Client::FORMAT_JSON,
             ],
             [
                 'text/xml',
-                Client::FORMAT_XML
+                Client::FORMAT_XML,
             ],
         ];
     }
@@ -99,7 +99,7 @@ HTML
             [
                 'http://some-domain.com',
                 'test/url',
-                'http://some-domain.com/test/url'
+                'http://some-domain.com/test/url',
             ],
             [
                 'http://some-domain.com',
@@ -109,7 +109,7 @@ HTML
             [
                 'http://some-domain.com',
                 ['test/url', 'param1' => 'name1'],
-                'http://some-domain.com/test/url?param1=name1'
+                'http://some-domain.com/test/url?param1=name1',
             ],
             [
                 'http://some-domain.com?base-param=base',
@@ -124,17 +124,17 @@ HTML
             [
                 'http://some-domain.com/',
                 '/test/url',
-                'http://some-domain.com/test/url'
+                'http://some-domain.com/test/url',
             ],
             [
                 'http://some-domain.com/',
                 'test/url',
-                'http://some-domain.com/test/url'
+                'http://some-domain.com/test/url',
             ],
             [
                 'http://some-domain.com',
                 '/test/url',
-                'http://some-domain.com/test/url'
+                'http://some-domain.com/test/url',
             ],
         ];
     }

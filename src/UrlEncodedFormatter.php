@@ -27,7 +27,6 @@ class UrlEncodedFormatter extends BaseObject implements FormatterInterface
      */
     public $charset;
 
-
     /**
      * {@inheritdoc}
      */

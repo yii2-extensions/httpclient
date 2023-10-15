@@ -23,15 +23,15 @@ final class ClientTest extends TestCase
             'testString' => UrlEncodedFormatter::className(),
             'testConfig' => [
                 'class' => UrlEncodedFormatter::className(),
-                'encodingType' => PHP_QUERY_RFC3986
+                'encodingType' => PHP_QUERY_RFC3986,
             ],
         ];
 
         $formatter = $client->getFormatter('testString');
-        $this->assertTrue($formatter instanceof UrlEncodedFormatter);
+        $this->assertInstanceOf(UrlEncodedFormatter::class, $formatter);
 
         $formatter = $client->getFormatter('testConfig');
-        $this->assertTrue($formatter instanceof UrlEncodedFormatter);
+        $this->assertInstanceOf(UrlEncodedFormatter::class, $formatter);
         $this->assertEquals(PHP_QUERY_RFC3986, $formatter->encodingType);
     }
 
@@ -57,7 +57,7 @@ final class ClientTest extends TestCase
         $client = new Client();
 
         $formatter = $client->getFormatter($format);
-        $this->assertTrue($formatter instanceof $expectedClass);
+        $this->assertInstanceOf($expectedClass, $formatter);
     }
 
     /**
@@ -71,7 +71,7 @@ final class ClientTest extends TestCase
             Client::FORMAT_JSON => UrlEncodedFormatter::className(),
         ];
         $formatter = $client->getFormatter(Client::FORMAT_JSON);
-        $this->assertTrue($formatter instanceof UrlEncodedFormatter);
+        $this->assertInstanceOf(UrlEncodedFormatter::class, $formatter);
     }
 
     public function testSetupParsers(): void
@@ -85,10 +85,10 @@ final class ClientTest extends TestCase
         ];
 
         $parser = $client->getParser('testString');
-        $this->assertTrue($parser instanceof UrlEncodedParser);
+        $this->assertInstanceOf(UrlEncodedParser::class, $parser);
 
         $parser = $client->getParser('testConfig');
-        $this->assertTrue($parser instanceof UrlEncodedParser);
+        $this->assertInstanceOf(UrlEncodedParser::class, $parser);
     }
 
     public function testGetUnrecognizedParser(): void
@@ -113,7 +113,7 @@ final class ClientTest extends TestCase
         $client = new Client();
 
         $parser = $client->getParser($format);
-        $this->assertTrue($parser instanceof $expectedClass);
+        $this->assertInstanceOf($expectedClass, $parser);
     }
 
     /**
@@ -128,7 +128,7 @@ final class ClientTest extends TestCase
         ];
 
         $parser = $client->getParser(Client::FORMAT_JSON);
-        $this->assertTrue($parser instanceof UrlEncodedParser);
+        $this->assertInstanceOf(UrlEncodedParser::class, $parser);
     }
 
     public function testSetupTransport(): void
@@ -141,7 +141,7 @@ final class ClientTest extends TestCase
 
         $client->setTransport(CurlTransport::className());
         $transport = $client->getTransport();
-        $this->assertTrue($transport instanceof CurlTransport);
+        $this->assertInstanceOf(CurlTransport::class, $transport);
     }
 
     /**
@@ -151,7 +151,7 @@ final class ClientTest extends TestCase
     {
         $client = new Client();
         $transport = $client->getTransport();
-        $this->assertTrue($transport instanceof Transport);
+        $this->assertInstanceOf(Transport::class, $transport);
     }
 
     public function testCreateRequest(): void
@@ -159,12 +159,12 @@ final class ClientTest extends TestCase
         $client = new Client();
 
         $request = $client->createRequest();
-        $this->assertTrue($request instanceof Request);
+        $this->assertInstanceOf(Request::class, $request);
         $this->assertSame($client, $request->client);
 
         $requestContent = 'test content';
         $client->requestConfig = [
-            'content' => $requestContent
+            'content' => $requestContent,
         ];
         $request = $client->createRequest();
         $this->assertEquals($requestContent, $request->getContent());
@@ -175,13 +175,13 @@ final class ClientTest extends TestCase
         $client = new Client();
 
         $response = $client->createResponse();
-        $this->assertTrue($response instanceof Response);
+        $this->assertInstanceOf(Response::class, $response);
         $this->assertSame($client, $response->client);
 
         $responseFormat = 'testFormat';
         $responseContent = 'test content';
         $client->responseConfig = [
-            'format' => $responseFormat
+            'format' => $responseFormat,
         ];
         $response = $client->createResponse($responseContent);
         $this->assertEquals($responseFormat, $response->getFormat());

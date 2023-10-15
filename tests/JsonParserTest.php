@@ -49,13 +49,14 @@ final class JsonParserTest extends TestCase
                 'userId' => '17',
                 'registryDate' => '2016-08-19 21:54:40',
                 'contractedServiceData' => [
-                        'id' => 6,
-                        'status' => true,
-                    ],
+                    'id' => 6,
+                    'status' => true,
+                ],
             ],
             'errors' => null,
         ];
-        $document->setContent(<<<JSON
+        $document->setContent(
+            <<<JSON
 {
   "code": 412,
   "httpMessage": "Precondition Failed",

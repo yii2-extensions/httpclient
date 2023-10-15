@@ -29,7 +29,7 @@ final class MessageTest extends TestCase
         $this->assertEquals($expectedHeaders, $message->getHeaders()->toArray());
 
         $additionalHeaders = [
-            'header3' => 'value3'
+            'header3' => 'value3',
         ];
         $message->addHeaders($additionalHeaders);
 
@@ -112,9 +112,9 @@ final class MessageTest extends TestCase
         ];
         $message->setCookies($cookies);
         $cookieCollection = $message->getCookies();
-        $this->assertTrue($cookieCollection instanceof CookieCollection);
+        $this->assertInstanceOf(CookieCollection::class, $cookieCollection);
         $cookie = $cookieCollection->get('test');
-        $this->assertTrue($cookie instanceof Cookie);
+        $this->assertInstanceOf(Cookie::class, $cookie);
         $this->assertEquals('test.com', $cookie->domain);
 
         $additionalCookies = [
@@ -125,7 +125,7 @@ final class MessageTest extends TestCase
         ];
         $message->addCookies($additionalCookies);
         $cookie = $cookieCollection->get('additional');
-        $this->assertTrue($cookie instanceof Cookie);
+        $this->assertInstanceOf(Cookie::class, $cookie);
         $this->assertEquals('additional.com', $cookie->domain);
     }
 
@@ -173,7 +173,7 @@ final class MessageTest extends TestCase
         $this->assertEquals($data, $message->getData());
 
         $additionalData = [
-            'field3' => 'value3'
+            'field3' => 'value3',
         ];
         $message->addData($additionalData);
         $this->assertEquals([...$data, ...$additionalData], $message->getData());

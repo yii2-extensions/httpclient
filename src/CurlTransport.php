@@ -116,7 +116,9 @@ class CurlTransport extends Transport
 
     /**
      * Prepare request for execution, creating cURL resource for it.
+     *
      * @param Request $request request instance.
+     *
      * @return array cURL options.
      */
     private function prepare($request)
@@ -157,7 +159,9 @@ class CurlTransport extends Transport
 
     /**
      * Initializes cURL resource.
+     *
      * @param array $curlOptions cURL options.
+     *
      * @return resource prepared cURL resource.
      */
     private function initCurl(array $curlOptions)
@@ -172,7 +176,9 @@ class CurlTransport extends Transport
 
     /**
      * Composes cURL options from raw request options.
+     *
      * @param array $options raw request options.
+     *
      * @return array cURL options, in format: [curl_constant => value].
      */
     private function composeCurlOptions(array $options)
@@ -214,6 +220,7 @@ class CurlTransport extends Transport
 
     /**
      * Setup a variable, which should collect the cURL response headers.
+     *
      * @param resource $curlResource cURL resource.
      * @param array $output variable, which should collection headers.
      */

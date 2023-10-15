@@ -15,7 +15,6 @@ final class MockTransport extends Transport
      */
     private array $responses = [];
 
-
     public function appendResponse(Response $response): void
     {
         $this->responses[] = $response;
