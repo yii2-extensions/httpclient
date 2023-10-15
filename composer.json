@@ -1,31 +1,36 @@
 {
-    "name": "yii2/template",
-    "type": "library",
-    "description": "_____",
+    "name": "yii2-extensions/httpclient",
+    "type": "yii2-extension",
+    "description": "HTTP client extension for Yii2",
     "keywords": [
-        "_____"
+        "yii2",
+        "http",
+        "httpclient",
+        "curl"
     ],
     "license": "mit",
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
         "php": ">=8.1",
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-libxml": "*",
+        "ext-SimpleXml": "*",
+        "ext-mbstring": "*",
         "yiisoft/yii2": "^2.2"
     },
     "require-dev": {
         "maglnet/composer-require-checker": "^4.6",
         "phpunit/phpunit": "^10.2",
-        "proget-hq/phpstan-yii2": "^0.8.0"
+        "yii2-extensions/debug": "dev-main",
+        "yii2-extensions/phpstan": "dev-main"
     },
     "autoload": {
-        "psr-4": {
-            "yii\\template\\": "src"
-        }
+        "psr-4": { "yii\\httpclient\\": "src" }
     },
     "autoload-dev": {
-        "psr-4": {
-            "yii\\template\\tests\\": "tests"
-        }
+        "psr-4": { "yiiunit\\extensions\\authclient\\": "tests" }
     },
     "extra": {
         "branch-alias": {
