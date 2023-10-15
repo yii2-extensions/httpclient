@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace yii\httpclient;
 
-use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 
