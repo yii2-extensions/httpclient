@@ -1,9 +1,12 @@
 {
-    "name": "yii2/template",
-    "type": "library",
-    "description": "_____",
+    "name": "yii2-extensions/httpclient",
+    "type": "yii2-extension",
+    "description": "HTTP client extension for Yii2",
     "keywords": [
-        "_____"
+        "yii2",
+        "http",
+        "httpclient",
+        "curl"
     ],
     "license": "mit",
     "minimum-stability": "dev",
@@ -18,14 +21,10 @@
         "proget-hq/phpstan-yii2": "^0.8.0"
     },
     "autoload": {
-        "psr-4": {
-            "yii\\template\\": "src"
-        }
+        "psr-4": { "yii\\httpclient\\": "src" }
     },
     "autoload-dev": {
-        "psr-4": {
-            "yii\\template\\tests\\": "tests"
-        }
+        "psr-4": { "yiiunit\\extensions\\authclient\\": "tests" }
     },
     "extra": {
         "branch-alias": {
