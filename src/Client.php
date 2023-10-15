@@ -26,34 +26,34 @@ class Client extends Component
     /**
      * @event RequestEvent an event raised right before sending request.
      */
-    const EVENT_BEFORE_SEND = 'beforeSend';
+    final public const EVENT_BEFORE_SEND = 'beforeSend';
     /**
      * @event RequestEvent an event raised right after request has been sent.
      */
-    const EVENT_AFTER_SEND = 'afterSend';
+    final public const EVENT_AFTER_SEND = 'afterSend';
     /**
      * JSON format
      */
-    const FORMAT_JSON = 'json';
+    final public const FORMAT_JSON = 'json';
     /**
      * urlencoded by RFC1738 query string, like name1=value1&name2=value2
      * @see https://php.net/manual/en/function.urlencode.php
      */
-    const FORMAT_URLENCODED = 'urlencoded';
+    final public const FORMAT_URLENCODED = 'urlencoded';
     /**
      * urlencoded by PHP_QUERY_RFC3986 query string, like name1=value1&name2=value2
      * @see https://php.net/manual/en/function.rawurlencode.php
      */
-    const FORMAT_RAW_URLENCODED = 'raw-urlencoded';
+    final public const FORMAT_RAW_URLENCODED = 'raw-urlencoded';
     /**
      * XML format
      */
-    const FORMAT_XML = 'xml';
+    final public const FORMAT_XML = 'xml';
     /**
      * CURL format
      * @since 2.0.9
      */
-    const FORMAT_CURL = 'curl';
+    final public const FORMAT_CURL = 'curl';
 
     /**
      * @var string base request URL.
@@ -103,7 +103,7 @@ class Client extends Component
      *   The callable should return a new instance of the object being created.
      * @param Transport|array|string $transport HTTP message transport
      */
-    public function setTransport($transport)
+    public function setTransport($transport): void
     {
         $this->_transport = $transport;
     }
@@ -376,7 +376,7 @@ class Client extends Component
      * @param Request $request request instance.
      * @since 2.0.1
      */
-    public function beforeSend($request)
+    public function beforeSend($request): void
     {
         $event = new RequestEvent();
         $event->request = $request;
@@ -390,7 +390,7 @@ class Client extends Component
      * @param Response $response received response instance.
      * @since 2.0.1
      */
-    public function afterSend($request, $response)
+    public function afterSend($request, $response): void
     {
         $event = new RequestEvent();
         $event->request = $request;

@@ -59,7 +59,7 @@ class XmlFormatter extends BaseObject implements FormatterInterface
     public function format(Request $request)
     {
         $contentType = $this->contentType;
-        $charset = $this->encoding === null ? Yii::$app->charset : $this->encoding;
+        $charset = $this->encoding ?? Yii::$app->charset;
         if (stripos($contentType, 'charset') === false) {
             $contentType .= '; charset=' . $charset;
         }
@@ -86,9 +86,8 @@ class XmlFormatter extends BaseObject implements FormatterInterface
 
     /**
      * @param DOMElement $element
-     * @param mixed $data
      */
-    protected function buildXml($element, $data)
+    protected function buildXml($element, mixed $data)
     {
         if (is_array($data) ||
             ($data instanceof \Traversable && $this->useTraversableAsArray && !$data instanceof Arrayable)
@@ -107,7 +106,7 @@ class XmlFormatter extends BaseObject implements FormatterInterface
                 }
             }
         } elseif (is_object($data)) {
-            $child = new DOMElement(StringHelper::basename(get_class($data)));
+            $child = new DOMElement(StringHelper::basename($data::class));
             $element->appendChild($child);
             if ($data instanceof Arrayable) {
                 $this->buildXml($child, $data->toArray());

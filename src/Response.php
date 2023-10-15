@@ -104,13 +104,13 @@ class Response extends Message
 
         if (!empty($contentTypeHeaders)) {
             $contentType = end($contentTypeHeaders);
-            if (stripos($contentType, 'json') !== false) {
+            if (stripos((string) $contentType, 'json') !== false) {
                 return Client::FORMAT_JSON;
             }
-            if (stripos($contentType, 'urlencoded') !== false) {
+            if (stripos((string) $contentType, 'urlencoded') !== false) {
                 return Client::FORMAT_URLENCODED;
             }
-            if (stripos($contentType, 'xml') !== false) {
+            if (stripos((string) $contentType, 'xml') !== false) {
                 return Client::FORMAT_XML;
             }
         }
@@ -148,10 +148,10 @@ class Response extends Message
         $pairs = explode(';', $cookieString);
         foreach ($pairs as $number => $pair) {
             $pair = trim($pair);
-            if (strpos($pair, '=') === false) {
+            if (!str_contains($pair, '=')) {
                 $params[$this->normalizeCookieParamName($pair)] = true;
             } else {
-                list($name, $value) = explode('=', $pair, 2);
+                [$name, $value] = explode('=', $pair, 2);
                 if ($number === 0) {
                     $params['name'] = $name;
                     $params['value'] = urldecode($value);
@@ -175,7 +175,7 @@ class Response extends Message
      * @param string $rawName raw cookie parameter name.
      * @return string name of [[Cookie]] field.
      */
-    private function normalizeCookieParamName($rawName)
+    private function normalizeCookieParamName(string $rawName)
     {
         static $nameMap = [
             'expires' => 'expire',

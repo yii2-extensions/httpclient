@@ -92,7 +92,7 @@ class StreamTransport extends Transport
         $contextOptions = [];
         foreach ($options as $key => $value) {
             $section = 'http';
-            if (strpos($key, 'ssl') === 0) {
+            if (str_starts_with($key, 'ssl')) {
                 $section = 'ssl';
                 $key = substr($key, 3);
             }

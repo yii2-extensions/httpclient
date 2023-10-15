@@ -6,7 +6,7 @@ use yii\httpclient\Exception;
 
 final class ExceptionTest extends \PHPUnit\Framework\TestCase
 {
-    public function testGetName()
+    public function testGetName(): void
     {
         $exception = new Exception('Test Exception');
 

@@ -14,17 +14,14 @@ final class MockTransport extends Transport
     /**
      * @var Request[]
      */
-    private $requests = [];
+    private array $requests = [];
     /**
      * @var Response[]
      */
-    private $responses = [];
+    private array $responses = [];
 
 
-    /**
-     * @param Response $response
-     */
-    public function appendResponse(Response $response)
+    public function appendResponse(Response $response): void
     {
         $this->responses[] = $response;
     }

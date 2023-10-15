@@ -202,7 +202,7 @@ class CurlTransport extends Transport
                     $curlOptions[$optionMap[$key]] = $value;
                 } else {
                     $key = strtoupper($key);
-                    if (strpos($key, 'SSL') === 0) {
+                    if (str_starts_with($key, 'SSL')) {
                         $key = substr($key, 3);
                         $constantName = 'CURLOPT_SSL_' . $key;
                         if (!defined($constantName)) {
@@ -223,7 +223,7 @@ class CurlTransport extends Transport
      * @param resource $curlResource cURL resource.
      * @param array $output variable, which should collection headers.
      */
-    private function setHeaderOutput($curlResource, array &$output)
+    private function setHeaderOutput($curlResource, array &$output): void
     {
         curl_setopt($curlResource, CURLOPT_HEADERFUNCTION, function($resource, $headerString) use (&$output) {
             $header = trim($headerString, "\n\r");

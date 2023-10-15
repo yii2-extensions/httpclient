@@ -27,11 +27,11 @@ class Request extends Message
     /**
      * @event RequestEvent an event raised right before sending request.
      */
-    const EVENT_BEFORE_SEND = 'beforeSend';
+    final public const EVENT_BEFORE_SEND = 'beforeSend';
     /**
      * @event RequestEvent an event raised right after request has been sent.
      */
-    const EVENT_AFTER_SEND = 'afterSend';
+    final public const EVENT_AFTER_SEND = 'afterSend';
 
     /**
      * @var string|array target URL.
@@ -44,16 +44,16 @@ class Request extends Message
     /**
      * @var string request method.
      */
-    private $_method = 'GET';
+    private string $_method = 'GET';
     /**
      * @var array request options.
      */
-    private $_options = [];
+    private array $_options = [];
     /**
      * @var bool whether request object has been prepared for sending or not.
      * @see prepare()
      */
-    private $isPrepared = false;
+    private bool $isPrepared = false;
     /**
      * @var resource The file that the transfer should be written to.
      */
@@ -61,11 +61,11 @@ class Request extends Message
     /**
      * @var array Stores map (alias => name) of the content parameters
      */
-    private $_contentMap = [];
+    private array $_contentMap = [];
     /**
      * @var float stores the starttime of the current request with microsecond-precession
      */
-    private $_startTime;
+    private string|float|null $_startTime = null;
     /**
      * @var float stores the seconds of how long does it take to get a response
      */
@@ -330,7 +330,7 @@ class Request extends Message
         }
 
         if (!empty($params)) {
-            if (strpos($url, '?') === false) {
+            if (!str_contains($url, '?')) {
                 $url .= '?';
             } else {
                 $url .= '&';
@@ -352,7 +352,7 @@ class Request extends Message
      * @see https://tools.ietf.org/html/rfc2616#section-19.5.1 for the Content-Disposition header
      * @see https://tools.ietf.org/html/rfc6266 for more details on the Content-Disposition header
      */
-    private function prepareMultiPartContent(array $content)
+    private function prepareMultiPartContent(array $content): void
     {
         static $disallowedChars = ["\0", '"', "\r", "\n"];
 
@@ -374,7 +374,7 @@ class Request extends Message
             $name = str_replace($disallowedChars, '_', $name);
             $contentDisposition = 'Content-Disposition: form-data; name="' . $name . '"';
             if (isset($contentParams['fileName'])) {
-                $fileName = str_replace($disallowedChars, '_', $contentParams['fileName']);
+                $fileName = str_replace($disallowedChars, '_', (string) $contentParams['fileName']);
                 $contentDisposition .= '; filename="' . $fileName . '"';
             }
             $headers[] = $contentDisposition;
@@ -393,7 +393,7 @@ class Request extends Message
         } while (preg_grep("/{$boundary}/", $contentParts));
 
         // add boundary for each part :
-        array_walk($contentParts, function (&$part) use ($boundary) {
+        array_walk($contentParts, function (&$part) use ($boundary): void {
             $part = "--{$boundary}\r\n{$part}";
         });
 
@@ -408,11 +408,9 @@ class Request extends Message
     /**
      * Composes given data as form inputs submitted values, taking in account nested arrays.
      * Converts `['form' => ['name' => 'value']]` to `['form[name]' => 'value']`.
-     * @param array $data
-     * @param string $baseKey
      * @return array
      */
-    private function composeFormInputs(array $data, $baseKey = '')
+    private function composeFormInputs(array $data, int|string $baseKey = '')
     {
         $result = [];
         foreach ($data as $key => $value) {
@@ -455,7 +453,7 @@ class Request extends Message
      * The method will invoke [[Client::beforeSend()]] and trigger the [[EVENT_BEFORE_SEND]] event.
      * @since 2.0.1
      */
-    public function beforeSend()
+    public function beforeSend(): void
     {
         $this->client->beforeSend($this);
 
@@ -471,7 +469,7 @@ class Request extends Message
      * @param Response $response received response instance.
      * @since 2.0.1
      */
-    public function afterSend($response)
+    public function afterSend($response): void
     {
         $this->_timeElapsed = microtime(true)-$this->_startTime;
         $this->client->afterSend($this, $response);
@@ -577,7 +575,7 @@ class Request extends Message
      * @param $name string
      * @param $alias string
      */
-    private function addAliasToContentMap($name, $alias)
+    private function addAliasToContentMap($name, $alias): void
     {
         $this->_contentMap[$alias] = $name;
     }
@@ -587,8 +585,8 @@ class Request extends Message
      * @param $alias string
      * @return string
      */
-    private function getNameByAlias($alias)
+    private function getNameByAlias(int|string $alias)
     {
-        return isset($this->_contentMap[$alias]) ? $this->_contentMap[$alias] : $alias;
+        return $this->_contentMap[$alias] ?? $alias;
     }
 }

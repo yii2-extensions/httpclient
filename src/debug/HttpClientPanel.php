@@ -33,17 +33,17 @@ class HttpClientPanel extends Panel
     /**
      * @var array HTTP requests info extracted to array as models, to use with data provider.
      */
-    private $_models;
+    private ?array $_models = null;
     /**
      * @var \yii\httpclient\Client|array|string
      */
-    private $_httpClient = 'yii\httpclient\Client';
+    private string $_httpClient = 'yii\httpclient\Client';
 
 
     /**
      * @param array $httpClient
      */
-    public function setHttpClient($httpClient)
+    public function setHttpClient($httpClient): void
     {
         $this->_httpClient = $httpClient;
     }
@@ -63,7 +63,7 @@ class HttpClientPanel extends Panel
     /**
      * {@inheritdoc}
      */
-    public function init()
+    public function init(): void
     {
         $this->actions['request-execute'] = [
             'class' => 'yii\httpclient\debug\RequestExecuteAction',
@@ -123,7 +123,7 @@ class HttpClientPanel extends Panel
     public function calculateTimings()
     {
         if ($this->_timings === null) {
-            $this->_timings = Yii::getLogger()->calculateTimings(isset($this->data['messages']) ? $this->data['messages'] : []);
+            $this->_timings = Yii::getLogger()->calculateTimings($this->data['messages'] ?? []);
         }
 
         return $this->_timings;

@@ -7,12 +7,12 @@
 
 namespace yii\httpclient;
 
+use Stringable;
 use yii\base\Component;
 use yii\base\ErrorHandler;
 use yii\web\Cookie;
 use yii\web\CookieCollection;
 use yii\web\HeaderCollection;
-use Yii;
 
 /**
  * Message represents a base HTTP message.
@@ -28,7 +28,7 @@ use Yii;
  * @author Paul Klimov <klimov.paul@gmail.com>
  * @since 2.0
  */
-class Message extends Component
+class Message extends Component implements Stringable
 {
     /**
      * @var Client owner client instance.
@@ -82,7 +82,7 @@ class Message extends Component
                     if (is_int($name)) {
                         // parse raw header :
                         $rawHeader = $value;
-                        if (strpos($rawHeader, 'HTTP/') === 0) {
+                        if (str_starts_with($rawHeader, 'HTTP/')) {
                             $parts = explode(' ', $rawHeader, 3);
                             $headerCollection->add('http-code', $parts[1]);
                         } elseif (($separatorPos = strpos($rawHeader, ':')) !== false) {
@@ -341,7 +341,7 @@ class Message extends Component
      * PHP magic method that returns the string representation of this object.
      * @return string the string representation of this object.
      */
-    public function __toString()
+    public function __toString(): string
     {
         // __toString cannot throw exception
         // use trigger_error to bypass this limitation

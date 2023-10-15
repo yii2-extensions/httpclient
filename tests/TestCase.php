@@ -67,7 +67,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      * @param string $expected
      * @param string $actual
      */
-    public function assertEqualsWithoutLE($expected, $actual)
+    public function assertEqualsWithoutLE($expected, $actual): void
     {
         $expected = str_replace(["\r", "\n"], '', $expected);
         $actual = str_replace(["\r", "\n"], '', $actual);
@@ -83,7 +83,7 @@ abstract class TestCase extends \PHPUnit\Framework\TestCase
      */
     protected function invoke($object, $method, array $args = [])
     {
-        $classReflection = new \ReflectionClass(get_class($object));
+        $classReflection = new \ReflectionClass($object::class);
         $methodReflection = $classReflection->getMethod($method);
         $methodReflection->setAccessible(true);
         $result = $methodReflection->invokeArgs($object, $args);

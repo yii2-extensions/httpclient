@@ -9,15 +9,9 @@ use yii\httpclient\Response;
 
 final class MockTransportTest extends TestCase
 {
-    /**
-     * @var Client
-     */
-    private $client;
+    private \yii\httpclient\Client $client;
 
-    /**
-     * @var MockTransport
-     */
-    private $transport;
+    private \yii\httpclient\MockTransport $transport;
 
     protected function setUp(): void
     {
@@ -25,7 +19,7 @@ final class MockTransportTest extends TestCase
         $this->client = new Client(['transport' => $this->transport]);
     }
 
-    public function testResponseIsGivenByTheUser()
+    public function testResponseIsGivenByTheUser(): void
     {
         $request = $this->client->createRequest();
         $response = $this->client->createResponse();
@@ -36,14 +30,14 @@ final class MockTransportTest extends TestCase
         $this->assertSame([$request], $this->transport->flushRequests());
     }
 
-    public function testCallingSendWithoutSettingTheResponseRaiseException()
+    public function testCallingSendWithoutSettingTheResponseRaiseException(): void
     {
         $this->expectException('yii\httpclient\Exception');
 
         $this->client->send($this->client->createRequest());
     }
 
-    public function testBatchResponsesAreFlushedInGivenOrder()
+    public function testBatchResponsesAreFlushedInGivenOrder(): void
     {
         $requests = [
             $this->client->createRequest(),
@@ -62,7 +56,7 @@ final class MockTransportTest extends TestCase
         $this->assertSame($requests, $this->transport->flushRequests());
     }
 
-    public function testParseResponseContentOnCustomResponseInjection()
+    public function testParseResponseContentOnCustomResponseInjection(): void
     {
         $value = uniqid('foo_');
 
@@ -70,7 +64,7 @@ final class MockTransportTest extends TestCase
         $response = new Response();
         $response->setContent(json_encode((object)[
             'custom_field' => $value,
-        ]));
+        ], JSON_THROW_ON_ERROR));
 
         $this->transport->appendResponse($response);
 

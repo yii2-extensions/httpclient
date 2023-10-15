@@ -14,7 +14,7 @@ class RequestTest extends TestCase
 
     // Tests :
 
-    public function testSetupUrl()
+    public function testSetupUrl(): void
     {
         $request = new Request();
 
@@ -23,7 +23,7 @@ class RequestTest extends TestCase
         $this->assertEquals($url, $request->getUrl());
     }
 
-    public function testAddData()
+    public function testAddData(): void
     {
         $request = new Request([
             'client' => new Client(),
@@ -46,13 +46,13 @@ class RequestTest extends TestCase
         $request->addData($data1);
         $this->assertEquals($data1, $request->getData());
         $request->addData($data2);
-        $this->assertEquals(array_merge($data1, $data2), $request->getData());
+        $this->assertEquals([...$data1, ...$data2], $request->getData());
         $request->prepare();
         $request->addData($data3);
-        $this->assertEquals(array_merge($data1, $data2, $data3), $request->getData());
+        $this->assertEquals([...$data1, ...$data2, ...$data3], $request->getData());
     }
 
-    public function testAddFile()
+    public function testAddFile(): void
     {
         $request = new Request();
         $request->addFile('file1', __DIR__ . '/test_file.txt');
@@ -67,7 +67,7 @@ class RequestTest extends TestCase
         $this->assertEquals($expectedContent, $request->getContent());
     }
 
-    public function testSetupMethod()
+    public function testSetupMethod(): void
     {
         $request = new Request();
 
@@ -76,7 +76,7 @@ class RequestTest extends TestCase
         $this->assertEquals($method, $request->getMethod());
     }
 
-    public function testSetupOptions()
+    public function testSetupOptions(): void
     {
         $request = new Request();
 
@@ -91,7 +91,7 @@ class RequestTest extends TestCase
     /**
      * @depends testSetupOptions
      */
-    public function testAddOptions()
+    public function testAddOptions(): void
     {
         $request = new Request();
 
@@ -164,7 +164,7 @@ class RequestTest extends TestCase
     /**
      * @depends testSetupMethod
      */
-    public function testFormatData()
+    public function testFormatData(): void
     {
         $request = new Request([
             'client' => new Client(),
@@ -183,7 +183,7 @@ class RequestTest extends TestCase
     /**
      * @depends testFormatData
      */
-    public function testToString()
+    public function testToString(): void
     {
         $request = new Request([
             'client' => new Client(),
@@ -225,10 +225,9 @@ EOL;
      * @dataProvider yiiunit\extensions\httpclient\Provider\Data::getFullUrl
      *
      * @param string $baseUrl
-     * @param mixed $url
      * @param string $expectedFullUrl
      */
-    public function testGetFullUrl($baseUrl, $url, $expectedFullUrl)
+    public function testGetFullUrl($baseUrl, mixed $url, $expectedFullUrl): void
     {
         $client = new Client();
         $client->baseUrl = $baseUrl;
@@ -238,7 +237,7 @@ EOL;
         $this->assertEquals($expectedFullUrl, $request->getFullUrl());
     }
 
-    public function testGetFullUrlWithoutUrlAndClientBaseUrl()
+    public function testGetFullUrlWithoutUrlAndClientBaseUrl(): void
     {
         $client = new Client();
         $request = new Request(['client' => $client]);
@@ -250,7 +249,7 @@ EOL;
     /**
      * @depends testToString
      */
-    public function testReuse()
+    public function testReuse(): void
     {
         $request = new Request([
             'client' => new Client(),
@@ -286,7 +285,7 @@ EOL;
         $this->assertEqualsWithoutLE($expectedResult, $request->toString());
     }
 
-    public function testMultiPartRequest()
+    public function testMultiPartRequest(): void
     {
         $request = new Request([
             'client' => new Client([
@@ -360,7 +359,7 @@ PART4;
         $this->assertEqualsWithoutLE($expectedPart4, $parts[4]);
     }
 
-    public function testMultiPartRequestWithParamsWithTheSameNames()
+    public function testMultiPartRequestWithParamsWithTheSameNames(): void
     {
         $request = new Request([
             'client' => new Client([
@@ -416,7 +415,7 @@ PART4;
         $this->assertEqualsWithoutLE($expectedPart4, $parts[4]);
     }
 
-    public function testMultiPartRequestWithFormInputs()
+    public function testMultiPartRequestWithFormInputs(): void
     {
         $request = new Request([
             'client' => new Client([
@@ -471,7 +470,7 @@ PART3;
      *
      * @depends testToString
      */
-    public function testGetParamsReuse()
+    public function testGetParamsReuse(): void
     {
         $request = new Request([
             'client' => new Client([
@@ -490,7 +489,7 @@ PART3;
         $this->assertEquals('GET http://php.net/docs.php?example=123', $request->toString());
     }
 
-    public function testComposeCookieHeader()
+    public function testComposeCookieHeader(): void
     {
         $request = new Request();
         $request->setCookies([

@@ -48,14 +48,14 @@ class UrlEncodedFormatter extends BaseObject implements FormatterInterface
             if (!empty($content)) {
                 $request->setFullUrl(null);
                 $url = $request->getFullUrl();
-                $url .= (strpos($url, '?') === false) ? '?' : '&';
+                $url .= (!str_contains($url, '?')) ? '?' : '&';
                 $url .= $content;
                 $request->setFullUrl($url);
             }
             return $request;
         }
 
-        $charset = $this->charset === null ? Yii::$app->charset : $this->charset;
+        $charset = $this->charset ?? Yii::$app->charset;
         $charset = $charset ? '; charset=' . $charset : '';
         $request->getHeaders()->set('Content-Type', 'application/x-www-form-urlencoded' . $charset);
 

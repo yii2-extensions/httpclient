@@ -7,7 +7,7 @@ use yii\httpclient\Response;
 
 class UrlEncodedParserTest extends TestCase
 {
-    public function testParse()
+    public function testParse(): void
     {
         $document = new Response();
         $data = [

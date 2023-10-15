@@ -41,9 +41,7 @@ echo GridView::widget([
         ],
         [
             'attribute' => 'duration',
-            'value' => function ($data) {
-                return sprintf('%.1f ms', $data['duration']);
-            },
+            'value' => fn($data) => sprintf('%.1f ms', $data['duration']),
             'options' => [
                 'width' => '10%',
             ],
@@ -53,16 +51,12 @@ echo GridView::widget([
         ],
         [
             'attribute' => 'type',
-            'value' => function ($data) {
-                    return Html::encode($data['type']);
-                },
+            'value' => fn($data) => Html::encode($data['type']),
             'filter' => $panel->getTypes(),
         ],
         [
             'attribute' => 'method',
-            'value' => function ($data) {
-                return Html::encode(mb_strtoupper($data['method'], 'utf8'));
-            },
+            'value' => fn($data) => Html::encode(mb_strtoupper((string) $data['method'], 'utf8')),
             'filter' => $panel->getMethods(),
         ],
         [
@@ -73,9 +67,7 @@ echo GridView::widget([
                 if (!empty($data['trace'])) {
                     $query .= Html::ul($data['trace'], [
                         'class' => 'trace',
-                        'item' => function ($trace) {
-                            return "<li>{$trace['file']} ({$trace['line']})</li>";
-                        },
+                        'item' => fn($trace) => "<li>{$trace['file']} ({$trace['line']})</li>",
                     ]);
                 }
 
