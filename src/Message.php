@@ -27,28 +27,28 @@ class Message extends Component implements Stringable
     /**
      * @var Client owner client instance.
      */
-    public $client;
+    public Client|null $client = null;
 
     /**
-     * @var HeaderCollection headers.
+     * @var array|HeaderCollection headers.
      */
-    private $_headers;
+    private array|HeaderCollection $_headers = [];
     /**
      * @var CookieCollection cookies.
      */
-    private $_cookies;
+    private array|CookieCollection $_cookies = [];
     /**
-     * @var string|null raw content
+     * @var array|string|null raw content
      */
-    private $_content;
+    private array|string|null $_content = null;
     /**
      * @var mixed content data
      */
-    private $_data;
+    private mixed $_data = null;
     /**
      * @var string content format name
      */
-    private $_format;
+    private string|null $_format = null;
 
     /**
      * Sets the HTTP headers associated with HTTP message.
@@ -285,7 +285,7 @@ class Message extends Component implements Stringable
      *
      * @return $this self reference.
      */
-    public function setFormat($format)
+    public function setFormat(string $format)
     {
         $this->_format = $format;
         return $this;
@@ -294,9 +294,9 @@ class Message extends Component implements Stringable
     /**
      * Returns body format.
      *
-     * @return string body format name.
+     * @return string|null body format name.
      */
-    public function getFormat()
+    public function getFormat(): string|null
     {
         if ($this->_format === null) {
             $this->_format = $this->defaultFormat();
@@ -309,7 +309,7 @@ class Message extends Component implements Stringable
      *
      * @return string default format name.
      */
-    protected function defaultFormat()
+    protected function defaultFormat(): string|null
     {
         return Client::FORMAT_URLENCODED;
     }

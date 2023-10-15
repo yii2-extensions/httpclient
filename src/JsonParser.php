@@ -15,7 +15,7 @@ class JsonParser extends BaseObject implements ParserInterface
     /**
      * @var bool whether to return objects in terms of associative arrays.
      */
-    public $asArray = true;
+    public bool $asArray = true;
 
     /**
      * {@inheritdoc}

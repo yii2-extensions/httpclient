@@ -23,9 +23,9 @@ class UrlEncodedFormatter extends BaseObject implements FormatterInterface
      */
     public $encodingType = PHP_QUERY_RFC1738;
     /**
-     * @var string the content charset. If not set, it will use the value of [[\yii\base\Application::charset]].
+     * @var string|null the content charset. If not set, it will use the value of [[\yii\base\Application::charset]].
      */
-    public $charset;
+    public string|null $charset = null;
 
     /**
      * {@inheritdoc}
