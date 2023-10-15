@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\StreamTransport;
@@ -7,7 +9,7 @@ use yii\httpclient\StreamTransport;
 /**
  * @group stream
  */
-class StreamTransportTest extends TransportTestCase
+final class StreamTransportTest extends TransportTestCase
 {
     /**
      * {@inheritdoc}

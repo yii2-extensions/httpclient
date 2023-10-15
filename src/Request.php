@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -18,9 +15,6 @@ use yii\helpers\FileHelper;
  * @property string $method Request method.
  * @property-read array $options Request options.
  * @property string|array $url Target URL or URL parameters.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class Request extends Message
 {
@@ -100,7 +94,6 @@ class Request extends Message
      * Do not use it for the target URL specification, use [[setUrl()]] instead.
      * @param string $fullUrl full target URL.
      * @return $this self reference.
-     * @since 2.0.3
      */
     public function setFullUrl($fullUrl)
     {
@@ -451,7 +444,6 @@ class Request extends Message
     /**
      * This method is invoked right before this request is sent.
      * The method will invoke [[Client::beforeSend()]] and trigger the [[EVENT_BEFORE_SEND]] event.
-     * @since 2.0.1
      */
     public function beforeSend(): void
     {
@@ -467,7 +459,6 @@ class Request extends Message
      * This method is invoked right after this request is sent.
      * The method will invoke [[Client::afterSend()]] and trigger the [[EVENT_AFTER_SEND]] event.
      * @param Response $response received response instance.
-     * @since 2.0.1
      */
     public function afterSend($response): void
     {
@@ -484,7 +475,6 @@ class Request extends Message
      * Return the response time in seconds
      *
      * @return float the seconds elapsed from request to response
-     * @since 2.0.12
      */
     public function responseTime()
     {
@@ -534,7 +524,6 @@ class Request extends Message
     /**
      * Gets the outputFile property
      * @return resource
-     * @since 2.0.9
      */
     public function getOutputFile()
     {
@@ -546,7 +535,6 @@ class Request extends Message
      * @see CURLOPT_FILE
      * @param resource $file
      * @return $this self reference.
-     * @since 2.0.9
      */
     public function setOutputFile($file)
     {

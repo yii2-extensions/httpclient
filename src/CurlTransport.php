@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -15,9 +12,6 @@ use Yii;
  * Note: this transport requires PHP 'curl' extension installed.
  *
  * For this transport, you may setup request options as [cURL Options](https://php.net/manual/en/function.curl-setopt.php)
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class CurlTransport extends Transport
 {

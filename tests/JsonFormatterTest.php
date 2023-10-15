@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\helpers\Json;
 use yii\httpclient\JsonFormatter;
 use yii\httpclient\Request;
 
-class JsonFormatterTest extends TestCase
+final class JsonFormatterTest extends TestCase
 {
     public function testFormat(): void
     {
@@ -34,4 +36,4 @@ class JsonFormatterTest extends TestCase
         $formatter->format($request);
         $this->assertNull($request->getContent());
     }
-} 
+}

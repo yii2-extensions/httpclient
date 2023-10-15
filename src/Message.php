@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -24,9 +21,6 @@ use yii\web\HeaderCollection;
  * @property string $format Body format name.
  * @property HeaderCollection $headers The header collection. Note that the type of this property differs in
  * getter and setter. See [[getHeaders()]] and [[setHeaders()]] for details.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class Message extends Component implements Stringable
 {
@@ -216,7 +210,6 @@ class Message extends Component implements Stringable
      * Checks if content with provided name exists
      * @param $key string Name of the content parameter
      * @return bool
-     * @since 2.0.10
      */
     public function hasContent($key)
     {

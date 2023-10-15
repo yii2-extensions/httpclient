@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -11,9 +8,6 @@ use yii\base\Component;
 
 /**
  * Transport performs actual HTTP request sending.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 abstract class Transport extends Component
 {

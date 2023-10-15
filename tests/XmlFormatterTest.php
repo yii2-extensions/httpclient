@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use DOMDocument;
@@ -8,7 +10,7 @@ use yii\base\Arrayable;
 use yii\httpclient\Request;
 use yii\httpclient\XmlFormatter;
 
-class XmlFormatterTest extends TestCase
+final class XmlFormatterTest extends TestCase
 {
     protected function setUp(): void
     {

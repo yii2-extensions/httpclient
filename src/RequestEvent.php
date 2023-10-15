@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -11,9 +8,6 @@ use yii\base\Event;
 
 /**
  * RequestEvent represents the event parameter used for an request events.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0.1
  */
 class RequestEvent extends Event
 {

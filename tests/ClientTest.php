@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use InvalidArgumentException;
@@ -12,7 +14,7 @@ use yii\httpclient\UrlEncodedFormatter;
 use yii\httpclient\UrlEncodedParser;
 use yii\web\HeaderCollection;
 
-class ClientTest extends TestCase
+final class ClientTest extends TestCase
 {
     public function testSetupFormatters(): void
     {

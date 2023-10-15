@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -18,9 +15,6 @@ use yii\helpers\StringHelper;
 
 /**
  * XmlFormatter formats HTTP message as XML.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class XmlFormatter extends BaseObject implements FormatterInterface
 {
@@ -42,13 +36,11 @@ class XmlFormatter extends BaseObject implements FormatterInterface
     public $rootTag = 'request';
     /**
      * @var string the name of the elements that represent the array elements with numeric keys.
-     * @since 2.0.1
      */
     public $itemTag = 'item';
     /**
      * @var bool whether to interpret objects implementing the [[\Traversable]] interface as arrays.
      * Defaults to `true`.
-     * @since 2.0.1
      */
     public $useTraversableAsArray = true;
 

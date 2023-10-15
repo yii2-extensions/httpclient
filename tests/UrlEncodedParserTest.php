@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\UrlEncodedParser;
 use yii\httpclient\Response;
 
-class UrlEncodedParserTest extends TestCase
+final class UrlEncodedParserTest extends TestCase
 {
     public function testParse(): void
     {
@@ -19,4 +21,4 @@ class UrlEncodedParserTest extends TestCase
         $parser = new UrlEncodedParser();
         $this->assertEquals($data, $parser->parse($document));
     }
-} 
+}

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\Response;
 use yii\httpclient\XmlParser;
 
-class XmlParserTest extends TestCase
+final class XmlParserTest extends TestCase
 {
     public function testParse(): void
     {
@@ -114,7 +116,7 @@ XML;
     public function testConvertXmlToArray(): void
     {
         $string = <<<XML
-<?xml version='1.0'?> 
+<?xml version='1.0'?>
 <document>
  <title>test</title>
 </document>

@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\Client;
 use yii\httpclient\Response;
 use yii\web\Cookie;
 
-class ResponseTest extends TestCase
+final class ResponseTest extends TestCase
 {
     /**
      * @dataProvider yiiunit\extensions\httpclient\Provider\Data::detectFormatByHeaders

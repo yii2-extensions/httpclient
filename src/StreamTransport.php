@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -15,9 +12,6 @@ use yii\helpers\Inflector;
  * StreamTransport sends HTTP messages using [Streams](https://php.net/manual/en/book.stream.php)
  *
  * For this transport, you may setup request options using [Context Options](https://php.net/manual/en/context.php)
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class StreamTransport extends Transport
 {

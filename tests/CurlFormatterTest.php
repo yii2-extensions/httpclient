@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\CurlFormatter;
 use yii\httpclient\Request;
 
-class CurlFormatterTest extends TestCase
+final class CurlFormatterTest extends TestCase
 {
     protected function setUp(): void
     {

@@ -1,11 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\Client;
 use yii\httpclient\Request;
 
-class RequestTest extends TestCase
+final class RequestTest extends TestCase
 {
     protected function setUp(): void
     {

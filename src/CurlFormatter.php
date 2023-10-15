@@ -1,20 +1,14 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
-use Yii;
 use yii\base\BaseObject;
 
 /**
  * CURLFormatter is used with CurlTransport to format the content of the request as an array
  * with the field name as key and field data as value
- * @see CURLOPT_POSTFIELDS
- * @since 2.0.9
  */
 class CurlFormatter extends BaseObject implements FormatterInterface
 {

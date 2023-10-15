@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\Message;
@@ -7,7 +9,7 @@ use yii\web\Cookie;
 use yii\web\CookieCollection;
 use yii\web\HeaderCollection;
 
-class MessageTest extends TestCase
+final class MessageTest extends TestCase
 {
     public function testSetupHeaders(): void
     {

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\Client;
@@ -8,7 +10,7 @@ use yii\httpclient\CurlTransport;
 /**
  * @group curl
  */
-class CurlTransportTest extends TransportTestCase
+final class CurlTransportTest extends TransportTestCase
 {
     /**
      * {@inheritdoc}

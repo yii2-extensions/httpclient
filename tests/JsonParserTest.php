@@ -1,12 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\helpers\Json;
 use yii\httpclient\JsonParser;
 use yii\httpclient\Response;
 
-class JsonParserTest extends TestCase
+final class JsonParserTest extends TestCase
 {
     public function testParse(): void
     {

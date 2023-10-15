@@ -1,15 +1,12 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
 use InvalidArgumentException;
-use yii\base\Component;
 use Yii;
+use yii\base\Component;
 use yii\helpers\StringHelper;
 
 /**
@@ -17,9 +14,6 @@ use yii\helpers\StringHelper;
  *
  * @property Transport $transport HTTP message transport instance. Note that the type of this property differs
  * in getter and setter. See [[getTransport()]] and [[setTransport()]] for details.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class Client extends Component
 {
@@ -51,7 +45,6 @@ class Client extends Component
     final public const FORMAT_XML = 'xml';
     /**
      * CURL format
-     * @since 2.0.9
      */
     final public const FORMAT_CURL = 'curl';
 
@@ -374,7 +367,6 @@ class Client extends Component
      * This method is invoked right before request is sent.
      * The method will trigger the [[EVENT_BEFORE_SEND]] event.
      * @param Request $request request instance.
-     * @since 2.0.1
      */
     public function beforeSend($request): void
     {
@@ -388,7 +380,6 @@ class Client extends Component
      * The method will trigger the [[EVENT_AFTER_SEND]] event.
      * @param Request $request request instance.
      * @param Response $response received response instance.
-     * @since 2.0.1
      */
     public function afterSend($request, $response): void
     {

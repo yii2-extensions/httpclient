@@ -1,9 +1,6 @@
 <?php
-/**
- * @link https://www.yiiframework.com/
- * @copyright Copyright (c) 2008 Yii Software LLC
- * @license https://www.yiiframework.com/license/
- */
+
+declare(strict_types=1);
 
 namespace yii\httpclient;
 
@@ -12,9 +9,6 @@ use yii\helpers\Json;
 
 /**
  * JsonFormatter formats HTTP message as JSON.
- *
- * @author Paul Klimov <klimov.paul@gmail.com>
- * @since 2.0
  */
 class JsonFormatter extends BaseObject implements FormatterInterface
 {
@@ -31,9 +25,11 @@ class JsonFormatter extends BaseObject implements FormatterInterface
     public function format(Request $request)
     {
         $request->getHeaders()->set('Content-Type', 'application/json; charset=UTF-8');
-        if (($data = $request->getData()) !== null) {
+
+        if ($request->getData() !== null) {
             $request->setContent(Json::encode($request->getData(), $this->encodeOptions));
         }
+
         return $request;
     }
 }

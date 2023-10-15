@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace yiiunit\extensions\httpclient;
 
 use yii\httpclient\Client;
 use yii\httpclient\MockTransport;
-use yii\httpclient\Request;
 use yii\httpclient\Response;
 
 final class MockTransportTest extends TestCase
