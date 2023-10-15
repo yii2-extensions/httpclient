@@ -353,11 +353,7 @@ class Request extends Message
             $url .= http_build_query($params);
         }
 
-        if ($url === null) {
-            throw new InvalidCallException('Either the $url or the $client->baseUrl must be set.');
-        }
-
-        return $url;
+        return $url ?? '';
     }
 
     /**
