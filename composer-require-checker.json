@@ -1,6 +1,6 @@
 {
     "symbol-whitelist": [
-        "yii?\\debug\\components\\search\\Filter",
+        "yii\\debug\\components\\search\\Filter",
         "yii\\debug\\models\\search\\Base",
         "yii\\debug\\Panel"
     ]

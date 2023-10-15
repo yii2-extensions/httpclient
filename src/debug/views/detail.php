@@ -1,8 +1,15 @@
 <?php
-/* @var $panel yii\httpclient\debug\HttpClientPanel */
-/* @var $searchModel yii\httpclient\debug\SearchModel */
-/* @var $dataProvider yii\data\ArrayDataProvider */
 
+declare(strict_types=1);
+
+/**
+ * @var int $queryCount
+ * @var int $queryTime
+ * @var yii\data\ArrayDataProvider $dataProvider
+ * @var yii\httpclient\debug\HttpClientPanel $panel
+ * @var yii\httpclient\debug\models\RequestSearch $searchModel
+ * @var yii\web\View $this
+ */
 use yii\helpers\Html;
 use yii\grid\GridView;
 

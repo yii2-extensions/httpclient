@@ -74,7 +74,7 @@ class HttpClientPanel extends Panel
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'HTTP Client';
     }
@@ -82,7 +82,7 @@ class HttpClientPanel extends Panel
     /**
      * {@inheritdoc}
      */
-    public function getSummary()
+    public function getSummary(): string
     {
         $timings = $this->calculateTimings();
         $queryCount = count($timings);
@@ -103,7 +103,7 @@ class HttpClientPanel extends Panel
     /**
      * {@inheritdoc}
      */
-    public function getDetail()
+    public function getDetail(): string
     {
         $searchModel = new SearchModel();
         $dataProvider = $searchModel->search(Yii::$app->request->getQueryParams(), $this->getModels());
@@ -132,7 +132,7 @@ class HttpClientPanel extends Panel
     /**
      * {@inheritdoc}
      */
-    public function save()
+    public function save(): mixed
     {
         $target = $this->module->logTarget;
         $messages = $target->filterMessages($target->messages, Logger::LEVEL_PROFILE, [
