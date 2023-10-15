@@ -22,7 +22,7 @@
         <img src="https://github.com/yii2-extensions/httpclient/actions/workflows/static.yml/badge.svg" alt="PHPStan">
     </a>
     <a href="https://github.com/yii2-extensions/httpclient/actions/workflows/static.yml" target="_blank">
-        <img src="https://img.shields.io/badge/PHPStan%20level-2-blue" alt="PHPStan level">
+        <img src="https://img.shields.io/badge/PHPStan%20level-1-blue" alt="PHPStan level">
     </a>
     <a href="https://github.styleci.io/repos/705179892?branch=main" target="_blank">
         <img src="https://github.styleci.io/repos/705179892/shield?branch=main" alt="Code style">
