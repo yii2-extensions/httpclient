@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace yii\httpclient;
 
+use yii\base\InvalidCallException;
 use yii\helpers\ArrayHelper;
 use yii\helpers\FileHelper;
 
@@ -352,7 +353,11 @@ class Request extends Message
             $url .= http_build_query($params);
         }
 
-        return $url ?? '';
+        if ($url === null) {
+            throw new InvalidCallException('Either the $url or the $client->baseUrl must be set.');
+        }
+
+        return $url;
     }
 
     /**
