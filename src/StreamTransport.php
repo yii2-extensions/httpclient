@@ -78,7 +78,9 @@ class StreamTransport extends Transport
 
     /**
      * Composes stream context options from raw request options.
+     *
      * @param array $options raw request options.
+     *
      * @return array stream context options.
      */
     private function composeContextOptions(array $options)

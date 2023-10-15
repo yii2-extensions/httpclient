@@ -93,6 +93,7 @@ final class ResponseTest extends TestCase
 
     /**
      * @dataProvider yiiunit\extensions\httpclient\Provider\Data::isOk
+     *
      * @depends      testGetStatusCode
      *
      * @param int $statusCode
@@ -114,7 +115,7 @@ final class ResponseTest extends TestCase
         $response->setHeaders(['set-cookie' => 'name1=value1; path=/; httponly']);
         $this->assertEquals(1, $response->getCookies()->count());
         $cookie = $response->getCookies()->get('name1');
-        $this->assertTrue($cookie instanceof Cookie);
+        $this->assertInstanceOf(Cookie::class, $cookie);
         $this->assertEquals('value1', $cookie->value);
         $this->assertEquals('/', $cookie->path);
         $this->assertEquals(true, $cookie->httpOnly);
@@ -122,7 +123,7 @@ final class ResponseTest extends TestCase
         $response = new Response();
         $response->setHeaders(['set-cookie' => 'COUNTRY=NA%2C195.177.208.1; expires=Thu, 23-Jul-2015 13:39:41 GMT; path=/; domain=.php.net']);
         $cookie = $response->getCookies()->get('COUNTRY');
-        $this->assertTrue($cookie instanceof Cookie);
+        $this->assertInstanceOf(Cookie::class, $cookie);
 
         $response = new Response();
         $response->setHeaders(['set-cookie' => [
@@ -135,16 +136,16 @@ final class ResponseTest extends TestCase
         $response = new Response();
         $response->setHeaders(['set-cookie' => 'extraParam=maxAge; path=/; httponly; Max-Age=3600']);
         $cookie = $response->getCookies()->get('extraParam');
-        $this->assertTrue($cookie instanceof Cookie);
+        $this->assertInstanceOf(Cookie::class, $cookie);
     }
 
     public function testToString(): void
     {
         $response = new Response([
             'headers' => [
-                'content-type' => 'text/html; charset=UTF-8'
+                'content-type' => 'text/html; charset=UTF-8',
             ],
-            'content' => '<html>Content</html>'
+            'content' => '<html>Content</html>',
         ]);
 
         $expectedResult = <<<EOL

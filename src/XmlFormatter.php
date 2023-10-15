@@ -44,7 +44,6 @@ class XmlFormatter extends BaseObject implements FormatterInterface
      */
     public $useTraversableAsArray = true;
 
-
     /**
      * {@inheritdoc}
      */

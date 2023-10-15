@@ -1,6 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -15,6 +18,7 @@ use yii\debug\models\search\Base;
  * Log search model.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
+ *
  * @since 2.0
  */
 class SearchModel extends Base
@@ -31,7 +35,6 @@ class SearchModel extends Base
      * @var int request attribute input search value
      */
     public $request;
-
 
     /**
      * {@inheritdoc}
@@ -60,6 +63,7 @@ class SearchModel extends Base
      *
      * @param array $params an array of parameter values indexed by parameter names
      * @param array $models data to return provider for
+     *
      * @return \yii\data\ArrayDataProvider
      */
     public function search($params, $models)

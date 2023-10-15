@@ -15,7 +15,7 @@ use yii\web\HeaderCollection;
  * Message represents a base HTTP message.
  *
  * @property string $content Raw body.
- * @property CookieCollection|Cookie[] $cookies The cookie collection. Note that the type of this property
+ * @property Cookie[]|CookieCollection $cookies The cookie collection. Note that the type of this property
  * differs in getter and setter. See [[getCookies()]] and [[setCookies()]] for details.
  * @property mixed $data Content data fields.
  * @property string $format Body format name.
@@ -50,10 +50,11 @@ class Message extends Component implements Stringable
      */
     private $_format;
 
-
     /**
      * Sets the HTTP headers associated with HTTP message.
+     *
      * @param array|HeaderCollection $headers headers collection or headers list in format: [headerName => headerValue]
+     *
      * @return $this self reference.
      */
     public function setHeaders($headers)
@@ -65,6 +66,7 @@ class Message extends Component implements Stringable
     /**
      * Returns the header collection.
      * The header collection contains the HTTP headers associated with HTTP message.
+     *
      * @return HeaderCollection the header collection
      */
     public function getHeaders()
@@ -98,7 +100,9 @@ class Message extends Component implements Stringable
 
     /**
      * Adds more headers to the already defined ones.
+     *
      * @param array $headers additional headers in format: [headerName => headerValue]
+     *
      * @return $this self reference.
      */
     public function addHeaders(array $headers)
@@ -113,6 +117,7 @@ class Message extends Component implements Stringable
     /**
      * Checks of HTTP message contains any header.
      * Using this method you are able to check cookie presence without instantiating [[HeaderCollection]].
+     *
      * @return bool whether message contains any header.
      */
     public function hasHeaders()
@@ -125,7 +130,9 @@ class Message extends Component implements Stringable
 
     /**
      * Sets the cookies associated with HTTP message.
-     * @param CookieCollection|Cookie[]|array $cookies cookie collection or cookies list.
+     *
+     * @param array|Cookie[]|CookieCollection $cookies cookie collection or cookies list.
+     *
      * @return $this self reference.
      */
     public function setCookies($cookies)
@@ -137,7 +144,8 @@ class Message extends Component implements Stringable
     /**
      * Returns the cookie collection.
      * The cookie collection contains the cookies associated with HTTP message.
-     * @return CookieCollection|Cookie[] the cookie collection.
+     *
+     * @return Cookie[]|CookieCollection the cookie collection.
      */
     public function getCookies()
     {
@@ -158,7 +166,9 @@ class Message extends Component implements Stringable
 
     /**
      * Adds more cookies to the already defined ones.
-     * @param Cookie[]|array $cookies additional cookies.
+     *
+     * @param array|Cookie[] $cookies additional cookies.
+     *
      * @return $this self reference.
      */
     public function addCookies(array $cookies)
@@ -176,6 +186,7 @@ class Message extends Component implements Stringable
     /**
      * Checks of HTTP message contains any cookie.
      * Using this method you are able to check cookie presence without instantiating [[CookieCollection]].
+     *
      * @return bool whether message contains any cookie.
      */
     public function hasCookies()
@@ -188,7 +199,9 @@ class Message extends Component implements Stringable
 
     /**
      * Sets the HTTP message raw content.
+     *
      * @param string $content raw content.
+     *
      * @return $this self reference.
      */
     public function setContent($content)
@@ -199,6 +212,7 @@ class Message extends Component implements Stringable
 
     /**
      * Returns HTTP message raw content.
+     *
      * @return string raw body.
      */
     public function getContent()
@@ -208,7 +222,9 @@ class Message extends Component implements Stringable
 
     /**
      * Checks if content with provided name exists
+     *
      * @param $key string Name of the content parameter
+     *
      * @return bool
      */
     public function hasContent($key)
@@ -217,11 +233,11 @@ class Message extends Component implements Stringable
         return is_array($content) && isset($content[$key]);
     }
 
-
-
     /**
      * Sets the data fields, which composes message content.
+     *
      * @param mixed $data content data fields.
+     *
      * @return $this self reference.
      */
     public function setData($data)
@@ -232,6 +248,7 @@ class Message extends Component implements Stringable
 
     /**
      * Returns the data fields, parsed from raw content.
+     *
      * @return mixed content data fields.
      */
     public function getData()
@@ -241,8 +258,11 @@ class Message extends Component implements Stringable
 
     /**
      * Adds data fields to the existing ones.
+     *
      * @param array $data additional content data fields.
+     *
      * @return $this self reference.
+     *
      * @since 2.0.1
      */
     public function addData($data)
@@ -260,7 +280,9 @@ class Message extends Component implements Stringable
 
     /**
      * Sets body format.
+     *
      * @param string $format body format name.
+     *
      * @return $this self reference.
      */
     public function setFormat($format)
@@ -271,6 +293,7 @@ class Message extends Component implements Stringable
 
     /**
      * Returns body format.
+     *
      * @return string body format name.
      */
     public function getFormat()
@@ -283,6 +306,7 @@ class Message extends Component implements Stringable
 
     /**
      * Returns default format name.
+     *
      * @return string default format name.
      */
     protected function defaultFormat()
@@ -293,6 +317,7 @@ class Message extends Component implements Stringable
     /**
      * Composes raw header lines from [[headers]].
      * Each line will be a string in format: 'header-name: value'.
+     *
      * @return array raw header lines.
      */
     public function composeHeaderLines()
@@ -312,6 +337,7 @@ class Message extends Component implements Stringable
 
     /**
      * Returns string representation of this HTTP message.
+     *
      * @return string the string representation of this HTTP message.
      */
     public function toString()
@@ -332,6 +358,7 @@ class Message extends Component implements Stringable
 
     /**
      * PHP magic method that returns the string representation of this object.
+     *
      * @return string the string representation of this object.
      */
     public function __toString(): string

@@ -1,6 +1,9 @@
 <?php
+
+declare(strict_types=1);
 /**
  * @link https://www.yiiframework.com/
+ *
  * @copyright Copyright (c) 2008 Yii Software LLC
  * @license https://www.yiiframework.com/license/
  */
@@ -22,6 +25,7 @@ use Yii;
  * @property array $types This property is read-only.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
+ *
  * @since 2.0
  */
 class HttpClientPanel extends Panel
@@ -35,10 +39,9 @@ class HttpClientPanel extends Panel
      */
     private ?array $_models = null;
     /**
-     * @var \yii\httpclient\Client|array|string
+     * @var array|string|\yii\httpclient\Client
      */
     private string $_httpClient = 'yii\httpclient\Client';
-
 
     /**
      * @param array $httpClient
@@ -49,8 +52,9 @@ class HttpClientPanel extends Panel
     }
 
     /**
-     * @return \yii\httpclient\Client
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return \yii\httpclient\Client
      */
     public function getHttpClient()
     {
@@ -146,6 +150,7 @@ class HttpClientPanel extends Panel
     /**
      * Returns an  array of models that represents logs of the current request.
      * Can be used with data providers such as \yii\data\ArrayDataProvider.
+     *
      * @return array models
      */
     protected function getModels()
@@ -174,6 +179,7 @@ class HttpClientPanel extends Panel
      * Returns HTTP request method.
      *
      * @param string $timing timing procedure string
+     *
      * @return string request method such as GET, POST, PUT, etc.
      */
     protected function getRequestMethod($timing)
@@ -188,6 +194,7 @@ class HttpClientPanel extends Panel
      * Returns request type.
      *
      * @param string $category
+     *
      * @return string request type such as 'normal', 'batch'
      */
     protected function getRequestType($category)
@@ -199,6 +206,7 @@ class HttpClientPanel extends Panel
      * Returns total request time.
      *
      * @param array $timings
+     *
      * @return int total time
      */
     protected function getTotalRequestTime($timings)

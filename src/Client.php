@@ -31,11 +31,13 @@ class Client extends Component
     final public const FORMAT_JSON = 'json';
     /**
      * urlencoded by RFC1738 query string, like name1=value1&name2=value2
+     *
      * @see https://php.net/manual/en/function.urlencode.php
      */
     final public const FORMAT_URLENCODED = 'urlencoded';
     /**
      * urlencoded by PHP_QUERY_RFC3986 query string, like name1=value1&name2=value2
+     *
      * @see https://php.net/manual/en/function.rawurlencode.php
      */
     final public const FORMAT_RAW_URLENCODED = 'raw-urlencoded';
@@ -75,15 +77,15 @@ class Client extends Component
     /**
      * @var int maximum symbols count of the request content, which should be taken to compose a
      * log and profile messages. Exceeding content will be truncated.
+     *
      * @see createRequestLogToken()
      */
     public $contentLoggingMaxSize = 2000;
 
     /**
-     * @var Transport|array|string|callable HTTP message transport.
+     * @var array|callable|string|Transport HTTP message transport.
      */
     private $_transport = 'yii\httpclient\StreamTransport';
-
 
     /**
      * Sets the HTTP message transport. It can be specified in one of the following forms:
@@ -94,7 +96,8 @@ class Client extends Component
      *   and the rest of the name-value pairs will be used to initialize the corresponding object properties
      * - a PHP callable: either an anonymous function or an array representing a class method (`[$class or $object, $method]`).
      *   The callable should return a new instance of the object being created.
-     * @param Transport|array|string $transport HTTP message transport
+     *
+     * @param array|string|Transport $transport HTTP message transport
      */
     public function setTransport($transport): void
     {
@@ -102,8 +105,9 @@ class Client extends Component
     }
 
     /**
-     * @return Transport HTTP message transport instance.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return Transport HTTP message transport instance.
      */
     public function getTransport()
     {
@@ -115,10 +119,13 @@ class Client extends Component
 
     /**
      * Returns HTTP message formatter instance for the specified format.
+     *
      * @param string $format format name.
-     * @return FormatterInterface formatter instance.
+     *
      * @throws InvalidArgumentException on invalid format name.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return FormatterInterface formatter instance.
      */
     public function getFormatter($format)
     {
@@ -126,11 +133,11 @@ class Client extends Component
             self::FORMAT_JSON => 'yii\httpclient\JsonFormatter',
             self::FORMAT_URLENCODED => [
                 'class' => 'yii\httpclient\UrlEncodedFormatter',
-                'encodingType' => PHP_QUERY_RFC1738
+                'encodingType' => PHP_QUERY_RFC1738,
             ],
             self::FORMAT_RAW_URLENCODED => [
                 'class' => 'yii\httpclient\UrlEncodedFormatter',
-                'encodingType' => PHP_QUERY_RFC3986
+                'encodingType' => PHP_QUERY_RFC3986,
             ],
             self::FORMAT_XML => 'yii\httpclient\XmlFormatter',
             self::FORMAT_CURL => 'yii\httpclient\CurlFormatter',
@@ -152,10 +159,13 @@ class Client extends Component
 
     /**
      * Returns HTTP message parser instance for the specified format.
+     *
      * @param string $format format name
-     * @return ParserInterface parser instance.
+     *
      * @throws InvalidArgumentException on invalid format name.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return ParserInterface parser instance.
      */
     public function getParser($format)
     {
@@ -181,8 +191,9 @@ class Client extends Component
     }
 
     /**
-     * @return Request request instance.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return Request request instance.
      */
     public function createRequest()
     {
@@ -196,10 +207,13 @@ class Client extends Component
 
     /**
      * Creates a response instance.
+     *
      * @param string $content raw content
      * @param array $headers headers list.
-     * @return Response request instance.
+     *
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return Response request instance.
      */
     public function createResponse($content = null, array $headers = [])
     {
@@ -216,10 +230,13 @@ class Client extends Component
 
     /**
      * Performs given request.
+     *
      * @param Request $request request to be sent.
-     * @return Response response instance.
+     *
      * @throws Exception on failure.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return Response response instance.
      */
     public function send($request)
     {
@@ -243,9 +260,11 @@ class Client extends Component
      * ```
      *
      * @param Request[] $requests requests to perform.
-     * @return Response[] responses list.
+     *
      * @throws Exception
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return Response[] responses list.
      */
     public function batchSend(array $requests)
     {
@@ -255,10 +274,12 @@ class Client extends Component
     /**
      * Composes the log/profiling message token for the given HTTP request parameters.
      * This method should be used by transports during request sending logging.
+     *
      * @param string $method request method name.
      * @param string $url request URL.
      * @param array $headers request headers.
      * @param string $content request content.
+     *
      * @return string log token.
      */
     public function createRequestLogToken($method, $url, $headers, $content)
@@ -277,10 +298,12 @@ class Client extends Component
 
     /**
      * Creates 'GET' request.
+     *
      * @param array|string $url target URL.
      * @param array|string $data if array - request data, otherwise - request content.
      * @param array $headers request headers.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function get($url, $data = null, $headers = [], $options = [])
@@ -290,10 +313,12 @@ class Client extends Component
 
     /**
      * Creates 'POST' request.
+     *
      * @param array|string $url target URL.
      * @param array|string $data if array - request data, otherwise - request content.
      * @param array $headers request headers.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function post($url, $data = null, $headers = [], $options = [])
@@ -303,10 +328,12 @@ class Client extends Component
 
     /**
      * Creates 'PUT' request.
+     *
      * @param array|string $url target URL.
      * @param array|string $data if array - request data, otherwise - request content.
      * @param array $headers request headers.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function put($url, $data = null, $headers = [], $options = [])
@@ -316,10 +343,12 @@ class Client extends Component
 
     /**
      * Creates 'PATCH' request.
+     *
      * @param array|string $url target URL.
      * @param array|string $data if array - request data, otherwise - request content.
      * @param array $headers request headers.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function patch($url, $data = null, $headers = [], $options = [])
@@ -329,10 +358,12 @@ class Client extends Component
 
     /**
      * Creates 'DELETE' request.
+     *
      * @param array|string $url target URL.
      * @param array|string $data if array - request data, otherwise - request content.
      * @param array $headers request headers.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function delete($url, $data = null, $headers = [], $options = [])
@@ -342,9 +373,11 @@ class Client extends Component
 
     /**
      * Creates 'HEAD' request.
+     *
      * @param array|string $url target URL.
      * @param array $headers request headers.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function head($url, $headers = [], $options = [])
@@ -354,8 +387,10 @@ class Client extends Component
 
     /**
      * Creates 'OPTIONS' request.
+     *
      * @param array|string $url target URL.
      * @param array $options request options.
+     *
      * @return Request request instance.
      */
     public function options($url, $options = [])
@@ -366,6 +401,7 @@ class Client extends Component
     /**
      * This method is invoked right before request is sent.
      * The method will trigger the [[EVENT_BEFORE_SEND]] event.
+     *
      * @param Request $request request instance.
      */
     public function beforeSend($request): void
@@ -378,6 +414,7 @@ class Client extends Component
     /**
      * This method is invoked right after request is sent.
      * The method will trigger the [[EVENT_AFTER_SEND]] event.
+     *
      * @param Request $request request instance.
      * @param Response $response received response instance.
      */
@@ -395,8 +432,10 @@ class Client extends Component
      * @param array|string $data
      * @param array $headers
      * @param array $options
-     * @return Request request instance.
+     *
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return Request request instance.
      */
     protected function createRequestShortcut($method, $url, $data, $headers, $options)
     {

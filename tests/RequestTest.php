@@ -224,6 +224,7 @@ EOL;
 
     /**
      * @depends      testSetupUrl
+     *
      * @dataProvider yiiunit\extensions\httpclient\Provider\Data::getFullUrl
      *
      * @param string $baseUrl
@@ -291,7 +292,7 @@ EOL;
     {
         $request = new Request([
             'client' => new Client([
-                'baseUrl' => '/api'
+                'baseUrl' => '/api',
             ]),
             'method' => 'POST',
         ]);
@@ -308,7 +309,7 @@ EOL;
             'data3' => [
                 'content' => 'file1',
                 'fileName' => 'file1.txt',
-                'mimeType' => 'application/octet-stream'
+                'mimeType' => 'application/octet-stream',
             ],
             'data4' => [
                 'content' => 'file2',
@@ -365,7 +366,7 @@ PART4;
     {
         $request = new Request([
             'client' => new Client([
-                'baseUrl' => '/api'
+                'baseUrl' => '/api',
             ]),
             'method' => 'POST',
         ]);
@@ -421,7 +422,7 @@ PART4;
     {
         $request = new Request([
             'client' => new Client([
-                'baseUrl' => '/api'
+                'baseUrl' => '/api',
             ]),
             'method' => 'POST',
         ]);
@@ -498,7 +499,7 @@ PART3;
             [
                 'name' => 'some',
                 'value' => 'foo',
-            ]
+            ],
         ]);
         $headers = $request->composeHeaderLines();
         $this->assertEquals(['Cookie: some=foo'], $headers);
@@ -506,9 +507,9 @@ PART3;
         // @see https://github.com/yiisoft/yii2-httpclient/issues/118
         $request->setCookies([
             [
-                'name' => "invalid/name",
+                'name' => 'invalid/name',
                 'value' => 'foo',
-            ]
+            ],
         ]);
         $headers = $request->composeHeaderLines();
         $this->assertEquals(['Cookie: invalid/name=foo'], $headers);

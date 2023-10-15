@@ -13,8 +13,8 @@ use yii\helpers\FileHelper;
  *
  * @property string $fullUrl Full target URL.
  * @property string $method Request method.
- * @property-read array $options Request options.
- * @property string|array $url Target URL or URL parameters.
+ * @property array $options Request options.
+ * @property array|string $url Target URL or URL parameters.
  */
 class Request extends Message
 {
@@ -28,7 +28,7 @@ class Request extends Message
     final public const EVENT_AFTER_SEND = 'afterSend';
 
     /**
-     * @var string|array target URL.
+     * @var array|string target URL.
      */
     private $_url;
     /**
@@ -45,6 +45,7 @@ class Request extends Message
     private array $_options = [];
     /**
      * @var bool whether request object has been prepared for sending or not.
+     *
      * @see prepare()
      */
     private bool $isPrepared = false;
@@ -65,11 +66,12 @@ class Request extends Message
      */
     private $_timeElapsed;
 
-
     /**
      * Sets target URL.
-     * @param string|array $url use a string to represent a URL (e.g. `http://some-domain.com`, `item/list`),
+     *
+     * @param array|string $url use a string to represent a URL (e.g. `http://some-domain.com`, `item/list`),
      * or an array to represent a URL with query parameters (e.g. `['item/list', 'param1' => 'value1']`).
+     *
      * @return $this self reference.
      */
     public function setUrl($url)
@@ -81,7 +83,8 @@ class Request extends Message
 
     /**
      * Returns target URL.
-     * @return string|array|null target URL or URL parameters
+     *
+     * @return array|string|null target URL or URL parameters
      */
     public function getUrl()
     {
@@ -92,7 +95,9 @@ class Request extends Message
      * Sets full target URL.
      * This method can be used during request formatting and preparation.
      * Do not use it for the target URL specification, use [[setUrl()]] instead.
+     *
      * @param string $fullUrl full target URL.
+     *
      * @return $this self reference.
      */
     public function setFullUrl($fullUrl)
@@ -103,6 +108,7 @@ class Request extends Message
 
     /**
      * Returns full target URL, including [[Client::baseUrl]] as a string.
+     *
      * @return string full target URL.
      */
     public function getFullUrl()
@@ -115,6 +121,7 @@ class Request extends Message
 
     /**
      * @param string $method request method
+     *
      * @return $this self reference.
      */
     public function setMethod($method)
@@ -148,6 +155,7 @@ class Request extends Message
      * there is a necessity for it.
      *
      * @param array $options request options.
+     *
      * @return $this self reference.
      */
     public function setOptions(array $options)
@@ -167,7 +175,9 @@ class Request extends Message
     /**
      * Adds more options to already defined ones.
      * Please refer to [[setOptions()]] on how to specify options.
+     *
      * @param array $options additional options
+     *
      * @return $this self reference.
      */
     public function addOptions(array $options)
@@ -211,12 +221,14 @@ class Request extends Message
 
     /**
      * Adds a content part for multi-part content request.
+     *
      * @param string $name part (form input) name.
      * @param string $content content.
      * @param array $options content part options, valid options are:
      *  - contentType - string, part content type
      *  - fileName - string, name of the uploading file
      *  - mimeType - string, part content type in case of file uploading
+     *
      * @return $this self reference.
      */
     public function addContent($name, $content, $options = [])
@@ -235,14 +247,18 @@ class Request extends Message
 
     /**
      * Adds a file for upload as multi-part content.
+     *
      * @see addContent()
+     *
      * @param string $name part (form input) name
      * @param string $fileName full name of the source file.
      * @param array $options content part options, valid options are:
      *  - fileName - string, base name of the uploading file, if not set it base name of the source file will be used.
      *  - mimeType - string, file mime type, if not set it will be determine automatically from source file.
-     * @return $this
+     *
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return $this
      */
     public function addFile($name, $fileName, $options = [])
     {
@@ -258,12 +274,15 @@ class Request extends Message
 
     /**
      * Adds a string as a file upload.
+     *
      * @see addContent()
+     *
      * @param string $name part (form input) name
      * @param string $content file content.
      * @param array $options content part options, valid options are:
      *  - fileName - string, base name of the uploading file.
      *  - mimeType - string, file mime type, if not set it 'application/octet-stream' will be used.
+     *
      * @return $this
      */
     public function addFileContent($name, $content, $options = [])
@@ -281,6 +300,7 @@ class Request extends Message
      * Prepares this request instance for sending.
      * This method should be invoked by transport before sending a request.
      * Do not call this method unless you know what you are doing.
+     *
      * @return $this self reference.
      */
     public function prepare()
@@ -299,7 +319,9 @@ class Request extends Message
 
     /**
      * Normalizes given URL value, filling it with actual string URL value.
+     *
      * @param array|string $url raw URL,
+     *
      * @return string full URL
      */
     private function createFullUrl($url)
@@ -340,7 +362,9 @@ class Request extends Message
 
     /**
      * Prepares multi-part content.
+     *
      * @param array $content multi part content.
+     *
      * @see https://tools.ietf.org/html/rfc7578
      * @see https://tools.ietf.org/html/rfc2616#section-19.5.1 for the Content-Disposition header
      * @see https://tools.ietf.org/html/rfc6266 for more details on the Content-Disposition header
@@ -381,7 +405,6 @@ class Request extends Message
 
         // generate safe boundary :
         do {
-
             $boundary = '---------------------' . md5(random_int(0, PHP_INT_MAX) . microtime());
         } while (preg_grep("/{$boundary}/", $contentParts));
 
@@ -401,6 +424,7 @@ class Request extends Message
     /**
      * Composes given data as form inputs submitted values, taking in account nested arrays.
      * Converts `['form' => ['name' => 'value']]` to `['form[name]' => 'value']`.
+     *
      * @return array
      */
     private function composeFormInputs(array $data, int|string $baseKey = '')
@@ -433,8 +457,10 @@ class Request extends Message
 
     /**
      * Sends this request.
-     * @return Response response instance.
+     *
      * @throws Exception
+     *
+     * @return Response response instance.
      */
     public function send()
     {
@@ -458,6 +484,7 @@ class Request extends Message
     /**
      * This method is invoked right after this request is sent.
      * The method will invoke [[Client::afterSend()]] and trigger the [[EVENT_AFTER_SEND]] event.
+     *
      * @param Response $response received response instance.
      */
     public function afterSend($response): void
@@ -513,8 +540,9 @@ class Request extends Message
     }
 
     /**
-     * @return FormatterInterface message formatter instance.
      * @throws \yii\base\InvalidConfigException
+     *
+     * @return FormatterInterface message formatter instance.
      */
     private function getFormatter()
     {
@@ -523,6 +551,7 @@ class Request extends Message
 
     /**
      * Gets the outputFile property
+     *
      * @return resource
      */
     public function getOutputFile()
@@ -532,8 +561,11 @@ class Request extends Message
 
     /**
      * Used with [[CurlTransport]] to set the file that the transfer should be written to
+     *
      * @see CURLOPT_FILE
+     *
      * @param resource $file
+     *
      * @return $this self reference.
      */
     public function setOutputFile($file)
@@ -545,7 +577,9 @@ class Request extends Message
 
     /**
      * Generates unique alias for the content
+     *
      * @param $name string
+     *
      * @return string
      */
     private function generateContentAlias($name)
@@ -560,6 +594,7 @@ class Request extends Message
 
     /**
      * Adds alias to the content map
+     *
      * @param $name string
      * @param $alias string
      */
@@ -570,7 +605,9 @@ class Request extends Message
 
     /**
      * Returns name by alias from the content map
+     *
      * @param $alias string
+     *
      * @return string
      */
     private function getNameByAlias(int|string $alias)
