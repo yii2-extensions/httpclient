@@ -7,7 +7,7 @@ declare(strict_types=1);
  * @var int $queryTime
  * @var yii\data\ArrayDataProvider $dataProvider
  * @var yii\httpclient\debug\HttpClientPanel $panel
- * @var yii\httpclient\debug\models\RequestSearch $searchModel
+ * @var yii\httpclient\debug\SearchModel $searchModel
  * @var yii\web\View $this
  */
 use yii\helpers\Html;
@@ -75,8 +75,25 @@ echo GridView::widget([
                     $query .= Html::tag(
                         'div',
                         implode('<br>', [
-                            Html::a('&gt;&gt; Execute', ['request-execute', 'seq' => $data['seq'], 'tag' => Yii::$app->controller->summary['tag']], ['target' => '_blank']),
-                            Html::a('&gt;&gt; Pass Through', ['request-execute', 'seq' => $data['seq'], 'tag' => Yii::$app->controller->summary['tag'], 'passthru' => true], ['target' => '_blank']),
+                            Html::a(
+                                '&gt;&gt; Execute',
+                                [
+                                    'request-execute',
+                                    'seq' => $data['seq'],
+                                    'tag' => Yii::$app->controller->summary['tag']
+                                ],
+                                ['target' => '_blank'],
+                            ),
+                            Html::a(
+                                '&gt;&gt; Pass Through',
+                                [
+                                    'request-execute',
+                                    'seq' => $data['seq'],
+                                    'tag' => Yii::$app->controller->summary['tag'],
+                                    'passthru' => true
+                                ],
+                                ['target' => '_blank'],
+                            ),
                         ]),
                         ['class' => 'db-explain']
                     );
