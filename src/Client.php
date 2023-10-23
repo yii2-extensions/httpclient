@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/**
+ * @link https://www.yiiframework.com/
+ *
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
 namespace yii\httpclient;
 
 use InvalidArgumentException;
@@ -14,6 +21,10 @@ use yii\helpers\StringHelper;
  *
  * @property Transport $transport HTTP message transport instance. Note that the type of this property differs
  * in getter and setter. See [[getTransport()]] and [[setTransport()]] for details.
+ *
+ * @author Paul Klimov <klimov.paul@gmail.com>
+ *
+ * @since 2.0
  */
 class Client extends Component
 {

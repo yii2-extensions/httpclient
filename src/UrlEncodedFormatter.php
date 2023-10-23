@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/**
+ * @link https://www.yiiframework.com/
+ *
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
 namespace yii\httpclient;
 
 use Yii;
@@ -9,6 +16,10 @@ use yii\base\BaseObject;
 
 /**
  * UrlEncodedFormatter formats HTTP message as 'application/x-www-form-urlencoded'.
+ *
+ * @author Paul Klimov <klimov.paul@gmail.com>
+ *
+ * @since 2.0
  */
 class UrlEncodedFormatter extends BaseObject implements FormatterInterface
 {

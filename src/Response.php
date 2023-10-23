@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/**
+ * @link https://www.yiiframework.com/
+ *
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
 namespace yii\httpclient;
 
 use yii\web\Cookie;
@@ -12,6 +19,10 @@ use yii\web\HeaderCollection;
  *
  * @property bool $isOk Whether response is OK.
  * @property string $statusCode Status code.
+ *
+ * @author Paul Klimov <klimov.paul@gmail.com>
+ *
+ * @since 2.0
  */
 class Response extends Message
 {

@@ -2,6 +2,13 @@
 
 declare(strict_types=1);
 
+/**
+ * @link https://www.yiiframework.com/
+ *
+ * @copyright Copyright (c) 2008 Yii Software LLC
+ * @license https://www.yiiframework.com/license/
+ */
+
 namespace yii\httpclient;
 
 use Stringable;
@@ -21,6 +28,10 @@ use yii\web\HeaderCollection;
  * @property string $format Body format name.
  * @property HeaderCollection $headers The header collection. Note that the type of this property differs in
  * getter and setter. See [[getHeaders()]] and [[setHeaders()]] for details.
+ *
+ * @author Paul Klimov <klimov.paul@gmail.com>
+ *
+ * @since 2.0
  */
 class Message extends Component implements Stringable
 {
