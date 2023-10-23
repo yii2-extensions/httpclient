@@ -17,7 +17,7 @@ use yii\base\Component;
  * Transport performs actual HTTP request sending.
  *
  * @author Paul Klimov <klimov.paul@gmail.com>
- * 
+ *
  * @since 2.0
  */
 abstract class Transport extends Component

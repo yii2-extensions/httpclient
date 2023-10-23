@@ -18,7 +18,6 @@ use yii\base\BaseObject;
  * with the field name as key and field data as value.
  *
  * @see CURLOPT_POSTFIELDS
- *
  * @since 2.0.9
  */
 class CurlFormatter extends BaseObject implements FormatterInterface
