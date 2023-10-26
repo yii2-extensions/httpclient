@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace yiiunit\extensions\httpclient\Provider;
+namespace yiiunit\extensions\httpclient\provider;
 
 use yii\httpclient\Client;
 use yii\httpclient\JsonFormatter;

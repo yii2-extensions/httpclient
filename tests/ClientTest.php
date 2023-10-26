@@ -47,7 +47,7 @@ final class ClientTest extends TestCase
     }
 
     /**
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::defaultFormatters
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::defaultFormatters
      *
      * @param string $format
      * @param string $expectedClass
@@ -103,7 +103,7 @@ final class ClientTest extends TestCase
     }
 
     /**
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::defaultParsers
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::defaultParsers
      *
      * @param string $format
      * @param string $expectedClass

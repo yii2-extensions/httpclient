@@ -225,7 +225,7 @@ EOL;
     /**
      * @depends      testSetupUrl
      *
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::getFullUrl
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::getFullUrl
      *
      * @param string $baseUrl
      * @param string $expectedFullUrl

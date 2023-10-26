@@ -11,7 +11,7 @@ use yii\web\Cookie;
 final class ResponseTest extends TestCase
 {
     /**
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::detectFormatByHeaders
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::detectFormatByHeaders
      *
      * @param string $contentType
      * @param string $expectedFormat
@@ -37,7 +37,7 @@ final class ResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::detectFormatByContent
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::detectFormatByContent
      *
      * @param string $content
      * @param string $expectedFormat
@@ -50,7 +50,7 @@ final class ResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::parseBody
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::parseBody
      *
      * @param string $content
      * @param string $format
@@ -92,7 +92,7 @@ final class ResponseTest extends TestCase
     }
 
     /**
-     * @dataProvider yiiunit\extensions\httpclient\Provider\Data::isOk
+     * @dataProvider yiiunit\extensions\httpclient\provider\Data::isOk
      *
      * @depends      testGetStatusCode
      *
